@@ -1,0 +1,68 @@
+PngOn550 <-
+function ( outfile = pngfilename, ptype = "land", outdir = dirdmp, x = l_png, y = l_pst, z = l_pdf, z1 = l_jpg )
+
+	{
+
+	#check
+	if ( x ) { y = FALSE; z = FALSE }
+
+	if ( x )
+
+		{
+
+		if (ptype == "land")
+
+			{
+
+			png(filename = paste (outdir, outfile, sep=""),
+			width = (1060*1),
+			height = (550*1),
+			units = "px",
+			pointsize = 15,
+			bg = "white",
+			res = NA)
+
+			}
+
+		else 
+
+			{
+
+			
+			png(filename = paste (outdir, outfile, sep=""),
+			width = 800,
+			height = 1060,
+			units = "px",
+			pointsize = 15,
+			bg = "white",
+			res = NA)
+
+			}
+
+		}
+
+	
+	if ( y )
+
+		{
+		postscript ( file = paste(outdir, pngfilename, ".ps",sep=""), paper="a4", horizontal = TRUE, onefile = TRUE )
+		}
+
+
+	if ( z )
+		{
+		pdf(file = paste( outdir, pngfilename, ".pdf",sep=""), width = 11, height = 8 , onefile = TRUE, paper = "a4")
+		}
+	
+
+	if ( z1 )
+		{
+		jpeg(filename = paste (outdir, outfile, sep=""),
+		width = 1060, height = 800,
+		quality = 75
+		)
+		}
+
+	print ( paste ( "output file is ", paste ( outdir, outfile, sep = "" ), sep = "" ) )
+
+	}

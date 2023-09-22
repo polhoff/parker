@@ -1,0 +1,38 @@
+
+#this is in rovelli.functions
+FitQuadratic <- function (x_input, y_output, l_plot = FALSE)
+	{
+
+	Time1 <- x_input
+	Time2 <- Time1 ^ 2
+
+	fit.lm <-lm(y_output ~ Time1 + Time2)
+	
+	# access the fitted series (for plotting)
+	fit <- fitted(fit.lm)  
+
+	# find predictions for original time series
+	pred_var <- predict(fit.lm)
+	ndx <- as.numeric(names(pred_var))
+	#pred_var <- predict(fit.lm, x_input)    
+
+	Rmse <- sum ((pred_var - y_output[ndx]) ^ 2) / length(pred_var)
+	
+	
+	MinValue <- min(pred_var)
+	MinIndex <- as.numeric(names(which.min(pred_var)))
+
+
+	pred_var_input <- as.numeric(names(pred_var))
+	if (l_plot)
+		{
+		plot(pred_var_input, pred_var)
+		#plot(1:length(x_input), pred_var)
+		points(1:length(x_input), y_output, col = 'red')
+		}
+	
+	return( list ('Rmse' = Rmse, 'MinIndex' = MinIndex, 'MinValue' = MinValue, 'predicted' = pred_var))
+	}
+
+#FitQuadratic (n_time, dsub01$DO)
+

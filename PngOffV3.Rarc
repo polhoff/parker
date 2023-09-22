@@ -1,0 +1,6 @@
+
+PngOff = function (x = l_png | l_tif | l_jpg)
+	{
+	if (x) {dev.off()}
+	}
+

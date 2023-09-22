@@ -1,0 +1,23 @@
+Year <-
+function( x, as_text = FALSE )
+	{	
+
+	if ( class(x) == "date")
+		{
+		y = as.numeric(format(as.POSIXct(x), "%Y"))
+		}
+	
+	if ( class(x) [1] == "POSIXt")
+		{
+		y = as.numeric (format( x, "%Y"))
+		}
+
+	if (as_text)
+		{
+		x_match = match ( y, c_match )
+		y1 = c_mnth[x_match]
+		return(y1)
+		}
+	
+	if (as_text == FALSE ) {	return(y) }
+	}

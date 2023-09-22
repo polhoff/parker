@@ -1,0 +1,30 @@
+
+MakeTime = function( x, as_text = FALSE )
+	{	
+
+	y  <-  x
+
+	if ( class(x) == "factor")
+		{
+		y <- as.character(x)
+		}
+
+	y1 <- as.numeric (substr (y, 1, 2))
+	y2 <- as.numeric (substr (y, 4, 5))
+	
+	
+	y3 <- try (as.numeric (substr (y, 7, 8)))
+	y3[is.na(y3)] <- 0	
+	
+	seconds_number <-  y3 + (y2 * 60) + y1 * 60 * 60
+	
+	sec_proportion <- seconds_number / (60*60*24)
+
+	return (sec_proportion)
+	}
+
+
+MakeTime ( '18:00:00')
+MakeTime ( '18:00')
+MakeTime ( '00:00')
+MakeTime ( '01:00')

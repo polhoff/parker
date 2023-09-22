@@ -1,0 +1,6 @@
+Month <-
+function( x )
+	{	
+	y = as.character (format( x, "%m"))
+	return ( y )
+	}

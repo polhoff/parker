@@ -1,0 +1,55 @@
+
+#MakeDateTime = function( c_date, c_time, as_text = FALSE, timezone = 'EST' )
+MakeDateTime = function( c_date, c_time, as_text = FALSE, timezone =  'Asia/Bangkok', l_GMT = TRUE )
+	{	
+
+	library (lubridate)
+
+	y <- c_date
+	z <- c_time
+
+
+	if ( class(y) == "factor")
+		{
+		y = as.character(y)
+		}
+
+
+	if ( class(z) == "factor")
+		{
+		z <- as.character(z)
+		}
+
+	
+	y <- as.Date (y)
+	y <- substr (as.character (y), 1, 10)
+
+
+	#add seconds just in case
+	z <-  paste ( z, ':00', sep = '' )
+	z <-  substr ( z, 1,8 )
+
+
+	yz <- paste ( y, z, timezone )
+
+	x_date = as.POSIXct ( yz, tz = timezone )
+	#x_date1 = format ( x_date - (7*60*60), tz = 'UTC' )
+	
+	
+	#if (l_GMT){ x_date <- x_date1}
+	
+	return (x_date)
+	}
+
+MakeDateTime ( '2013-12-31', '14:01' )
+MakeDateTime ( '2013-03-31', '14:01' )
+MakeDateTime ( '2013-03-31', '00:00' )
+MakeDateTime ( '2013-03-31', '00:01' )
+MakeDateTime ( '2013-03-31', '01:00' )
+MakeDateTime ( '2013-03-31', '01:01' )
+MakeDateTime ( '2013-03-31', '02:01' )
+
+
+
+#with_tz( MakeDateTime ( '2013-03-31', '02:01' ), tzone = "")
+

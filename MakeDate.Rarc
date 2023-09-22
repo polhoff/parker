@@ -1,0 +1,29 @@
+
+MakeDate = function( x, as_text = FALSE )
+	{	
+
+	y = x
+
+	if ( class(x) == "factor")
+		{
+		y = as.character(x)
+		}
+
+	y1 = as.numeric (substr (y, 1, 4))
+	y2 = as.numeric (substr (y, 6, 7))
+	y3 = as.numeric (substr (y, 9, 10))
+	
+	
+
+
+	c_days = as.character ( c ( paste ( "0", 1:9, sep = ""), 10:31 ) )
+
+	x_date = as.POSIXct ( paste ( y1, y2, y3, sep = '-' ))
+	
+	return (x_date)
+	
+	}
+
+MakeDate ('2001:12:31')
+MakeDate ('2001-12-31')
+MakeDate ('2001_12_31')

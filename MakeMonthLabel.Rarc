@@ -1,0 +1,26 @@
+
+MakeMonthLabel <-
+function( date1 )
+	{	
+
+	data (parker)
+	
+	try ( x <- as.Date (date1))
+	
+	stopifnot ( class (x) == 'Date' )
+
+	y = as.character (format( x, "%d"))
+	z = as.numeric ( as.character (format( x, "%m")))
+	
+	y1 = paste ( y, mnths[z] ) 
+	
+	return ( y1 )
+	}
+
+
+x2 = as.Date ('1981-01-31')
+MakeMonthLabel (x2)
+
+
+x2 = as.Date ('1981-12-01')
+MakeMonthLabel (x2)

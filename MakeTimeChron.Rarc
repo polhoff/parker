@@ -1,0 +1,25 @@
+
+MakeTimeChron = function( x, as_text = FALSE )
+	{	
+
+	library (chron)
+
+	y  <-  x
+
+	if ( class(x) == "factor")
+		{
+		y <- as.character(x)
+		}
+
+	
+	#add seconds just in case
+	y <-  paste ( y, ':00', sep = '' )
+	y <-  substr ( y, 1,8 )
+
+
+	return ( times (y))
+	}
+
+
+MakeTimeChron ( '23:00:01')
+MakeTimeChron ( '23:00')

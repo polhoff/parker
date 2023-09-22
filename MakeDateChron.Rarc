@@ -1,0 +1,19 @@
+
+MakeDateChron = function( x, as_text = FALSE )
+	{	
+
+	library (chron)
+
+	y  <-  x
+
+	if ( class(x) == "factor")
+		{
+		y <- as.character(x)
+		}
+	
+	y1 <- dates ( y, format = 'y-m-d' )
+
+	return (y1)
+	}
+
+MakeDateChron  ('2013-01-01')
